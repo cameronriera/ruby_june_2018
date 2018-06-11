@@ -1,0 +1,318 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AndaleMono;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red42\green230\blue17;\red0\green0\blue0;\red46\green174\blue187;
+\red35\green255\blue6;\red200\green20\blue201;\red202\green202\blue202;\red23\green23\blue23;}
+{\*\expandedcolortbl;;\cssrgb\c14143\c90198\c7531;\csgray\c0\c90000;\cssrgb\c20198\c73241\c78251;
+\cssrgb\c15\c100000\c23;\cssrgb\c83397\c23076\c82665;\cssrgb\c83137\c83137\c83137;\cssrgb\c11765\c11765\c11765;}
+\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1. rails new dojo_ninjas\
+\
+2. 	rails g model Dojo name:string city:string state:string\
+	rails g model Ninja first_name:string last_name:string dojo:references\
+\
+3. \
+
+\f1\fs30 \cf2 \cb3 \CocoaLigature0 2.3.1 :001 > Dojo.all\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2   \cf4 Dojo Load (7.3ms)\cf2   \cf5 SELECT "dojos".* FROM "dojos"\cf2 \
+ => #<ActiveRecord::Relation []> \
+2.3.1 :002 > dojo1 = Dojo.new\
+ => #<Dojo id: nil, name: nil, city: nil, state: nil, created_at: nil, updated_at: nil> \
+2.3.1 :003 > dojo1.save\
+  \cf6  (0.0ms)\cf2   begin transaction\
+  \cf4 SQL (3.7ms)\cf2   \cf5 INSERT INTO "dojos" ("created_at", "updated_at") VALUES (?, ?)\cf2   [["created_at", "2018-06-10 21:34:57.918208"], ["updated_at", "2018-06-10 21:34:57.918208"]]\
+  \cf6  (3.2ms)\cf2   commit transaction\
+ => true \
+2.3.1 :004 > Dojo.all\
+  \cf4 Dojo Load (2.7ms)\cf2   \cf5 SELECT "dojos".* FROM "dojos"\cf2 \
+ => #<ActiveRecord::Relation [#<Dojo id: 1, name: nil, city: nil, state: nil, created_at: "2018-06-10 21:34:57", updated_at: "2018-06-10 21:34:57">]> \
+2.3.1 :005 > dojo2 = Dojo.new\
+ => #<Dojo id: nil, name: nil, city: nil, state: nil, created_at: nil, updated_at: nil> \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+6. \
+-1\
+
+\f1\fs30 \cf2 \cb3 \CocoaLigature0 2.3.1 :012 > Dojo.all.destroy_all\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2   \cf4 Dojo Load (2.3ms)\cf2   \cf5 SELECT "dojos".* FROM "dojos"\cf2 \
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (3.5ms)\cf2   \cf5 DELETE FROM "dojos" WHERE "dojos"."id" = ?\cf2   [["id", 1]]\
+  \cf6  (2.3ms)\cf2   commit transaction\
+  \cf4  (0.0ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (2.4ms)\cf2   DELETE FROM "dojos" WHERE "dojos"."id" = ?  [["id", 2]]\
+  \cf4  (1.7ms)\cf2   \cf5 commit transaction\cf2 \
+  \cf6  (0.0ms)\cf2   begin transaction\
+  \cf4 SQL (2.6ms)\cf2   \cf5 DELETE FROM "dojos" WHERE "dojos"."id" = ?\cf2   [["id", 3]]\
+  \cf6  (1.8ms)\cf2   commit transaction\
+  \cf4  (0.0ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (4.0ms)\cf2   DELETE FROM "dojos" WHERE "dojos"."id" = ?  [["id", 4]]\
+  \cf4  (3.1ms)\cf2   \cf5 commit transaction\cf2 \
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (7.4ms)\cf2   \cf5 DELETE FROM "dojos" WHERE "dojos"."id" = ?\cf2   [["id", 7]]\
+  \cf6  (5.1ms)\cf2   commit transaction\
++----+----------------+---------------+-------+-------------------------+-------------------------+\
+| id | name           | city          | state | created_at              | updated_at              |\
++----+----------------+---------------+-------+-------------------------+-------------------------+\
+| 1  |                |               |       | 2018-06-10 21:34:57 UTC | 2018-06-10 21:34:57 UTC |\
+| 2  | Dallas         | Dallas        | TX    | 2018-06-10 21:42:59 UTC | 2018-06-10 21:42:59 UTC |\
+| 3  | Silicon Valley | Mountain View | CA    | 2018-06-10 21:44:02 UTC | 2018-06-10 21:44:02 UTC |\
+| 4  | Seattle        | Bellevue      | WA    | 2018-06-10 21:47:33 UTC | 2018-06-10 21:47:33 UTC |\
+| 7  | Los Angeles    | Los Angeles   | CA    | 2018-06-10 22:06:35 UTC | 2018-06-10 22:06:35 UTC |\
++----+----------------+---------------+-------+-------------------------+-------------------------+\
+5 rows in set\
+2.3.1 :013 > Dojo.all\
+  \cf4 Dojo Load (2.4ms)\cf2   \cf5 SELECT "dojos".* FROM "dojos"\cf2 \
+ => #<ActiveRecord::Relation []> \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+-2\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs30 \cf2 \cb3 \CocoaLigature0 2.3.1 :018 > dojo5 = Dojo.new(name: "Los Angeles", city: "Los Angeles", state: "CA")\
++----+-------------+-------------+-------+------------+------------+\
+| id | name        | city        | state | created_at | updated_at |\
++----+-------------+-------------+-------+------------+------------+\
+|    | Los Angeles | Los Angeles | CA    |            |            |\
++----+-------------+-------------+-------+------------+------------+\
+1 row in set\
+2.3.1 :019 > dojo5.save\
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (4.8ms)\cf2   \cf5 INSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)\cf2   [["name", "Los Angeles"], ["city", "Los Angeles"], ["state", "CA"], ["created_at", "2018-06-10 22:21:57.425300"], ["updated_at", "2018-06-10 22:21:57.425300"]]\
+  \cf6  (4.0ms)\cf2   commit transaction\
+ => true \
+2.3.1 :020 > dojo4 = Dojo.new(name: "Seattle", city: "Bellevue", state: "WA")\
++----+---------+----------+-------+------------+------------+\
+| id | name    | city     | state | created_at | updated_at |\
++----+---------+----------+-------+------------+------------+\
+|    | Seattle | Bellevue | WA    |            |            |\
++----+---------+----------+-------+------------+------------+\
+1 row in set\
+2.3.1 :021 > dojo4.save\
+  \cf4  (0.1ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (5.3ms)\cf2   INSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Seattle"], ["city", "Bellevue"], ["state", "WA"], ["created_at", "2018-06-10 22:22:14.115591"], ["updated_at", "2018-06-10 22:22:14.115591"]]\
+  \cf4  (2.9ms)\cf2   \cf5 commit transaction\cf2 \
+ => true \
+2.3.1 :022 > dojo3 = Dojo.new(name: "Silicon Valley", city: "Mountain View", state: "CA")\
++----+----------------+---------------+-------+------------+------------+\
+| id | name           | city          | state | created_at | updated_at |\
++----+----------------+---------------+-------+------------+------------+\
+|    | Silicon Valley | Mountain View | CA    |            |            |\
++----+----------------+---------------+-------+------------+------------+\
+1 row in set\
+2.3.1 :023 > dojo3.save\
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (4.5ms)\cf2   \cf5 INSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)\cf2   [["name", "Silicon Valley"], ["city", "Mountain View"], ["state", "CA"], ["created_at", "2018-06-10 22:22:28.896964"], ["updated_at", "2018-06-10 22:22:28.896964"]]\
+  \cf6  (4.5ms)\cf2   commit transaction\
+ => true \
+2.3.1 :024 > dojo2 = Dojo.create(name: "Dallas", city: "Dallas", state: "TX")\
+  \cf4  (0.1ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (4.8ms)\cf2   INSERT INTO "dojos" ("name", "city", "state", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Dallas"], ["city", "Dallas"], ["state", "TX"], ["created_at", "2018-06-10 22:23:16.905855"], ["updated_at", "2018-06-10 22:23:16.905855"]]\
+  \cf4  (3.7ms)\cf2   \cf5 commit transaction\cf2 \
++----+--------+--------+-------+-------------------------+-------------------------+\
+| id | name   | city   | state | created_at              | updated_at              |\
++----+--------+--------+-------+-------------------------+-------------------------+\
+| 12 | Dallas | Dallas | TX    | 2018-06-10 22:23:16 UTC | 2018-06-10 22:23:16 UTC |\
++----+--------+--------+-------+-------------------------+-------------------------+\
+1 row in set\
+2.3.1 :025 > dojo2.save\
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4  (0.1ms)\cf2   \cf5 commit transaction\cf2 \
+ => true \
+2.3.1 :026 > Dojo.all\
+  \cf6 Dojo Load (2.6ms)\cf2   SELECT "dojos".* FROM "dojos"\
++----+----------------+---------------+-------+-------------------------+-------------------------+\
+| id | name           | city          | state | created_at              | updated_at              |\
++----+----------------+---------------+-------+-------------------------+-------------------------+\
+| 9  | Los Angeles    | Los Angeles   | CA    | 2018-06-10 22:21:57 UTC | 2018-06-10 22:21:57 UTC |\
+| 10 | Seattle        | Bellevue      | WA    | 2018-06-10 22:22:14 UTC | 2018-06-10 22:22:14 UTC |\
+| 11 | Silicon Valley | Mountain View | CA    | 2018-06-10 22:22:28 UTC | 2018-06-10 22:22:28 UTC |\
+| 12 | Dallas         | Dallas        | TX    | 2018-06-10 22:23:16 UTC | 2018-06-10 22:23:16 UTC |\
++----+----------------+---------------+-------+-------------------------+-------------------------+\
+4 rows in set\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+-3\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs30 \cf2 \cb3 \CocoaLigature0 2.3.1 :008 > dojo5.errors\
+ => #<ActiveModel::Errors:0x00000003a22008 @base=#<Dojo id: nil, name: "Los Angeles", city: "Los Angeles", state: "California", created_at: nil, updated_at: nil>, @messages=\{:state=>["is the wrong length (should be 2 characters)"]\}> \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+-4,5,6,7\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs30 \cf2 \cb3 \CocoaLigature0 2.3.1 :036 > n1 = Ninja.create(first_name: "Cameron", last_name: "Riera", dojo_id: "12")\
+  \cf4  (0.2ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (5.6ms)\cf2   INSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Cameron"], ["last_name", "Riera"], ["dojo_id", 12], ["created_at", "2018-06-10 22:27:18.089302"], ["updated_at", "2018-06-10 22:27:18.089302"]]\
+  \cf4  (3.5ms)\cf2   \cf5 commit transaction\cf2 \
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 2  | Cameron    | Riera     | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+1 row in set\
+2.3.1 :037 > n1\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 2  | Cameron    | Riera     | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+1 row in set\
+2.3.1 :038 > Dojo.find(12).ninjas\
+  \cf6 Dojo Load (3.7ms)\cf2   SELECT  "dojos".* FROM "dojos" WHERE "dojos"."id" = ? LIMIT 1  [["id", 12]]\
+  \cf4 Ninja Load (1.3ms)\cf2   \cf5 SELECT "ninjas".* FROM "ninjas" WHERE "ninjas"."dojo_id" = ?\cf2   [["dojo_id", 12]]\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 2  | Cameron    | Riera     | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+1 row in set\
+2.3.1 :039 > n2 = Ninja.create(first_name: "Dianne", last_name: "Feinstein", dojo_id: "14")\
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (5.6ms)\cf2   \cf5 INSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)\cf2   [["first_name", "Dianne"], ["last_name", "Feinstein"], ["dojo_id", 14], ["created_at", "2018-06-10 22:29:22.961770"], ["updated_at", "2018-06-10 22:29:22.961770"]]\
+  \cf6  (3.8ms)\cf2   commit transaction\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 3  | Dianne     | Feinstein | 14      | 2018-06-10 22:29:22 UTC | 2018-06-10 22:29:22 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+1 row in set\
+2.3.1 :040 > Ninja.all\
+  \cf4 Ninja Load (2.2ms)\cf2   \cf5 SELECT "ninjas".* FROM "ninjas"\cf2 \
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 1  |            |           |         | 2018-06-10 21:58:59 UTC | 2018-06-10 21:58:59 UTC |\
+| 2  | Cameron    | Riera     | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
+| 3  | Dianne     | Feinstein | 14      | 2018-06-10 22:29:22 UTC | 2018-06-10 22:29:22 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+3 rows in set\
+2.3.1 :041 > n3 = Ninja.new(first_name: "Gregory", last_name: "Paul", dojo_id: "12")\
++----+------------+-----------+---------+------------+------------+\
+| id | first_name | last_name | dojo_id | created_at | updated_at |\
++----+------------+-----------+---------+------------+------------+\
+|    | Gregory    | Paul      | 12      |            |            |\
++----+------------+-----------+---------+------------+------------+\
+1 row in set\
+2.3.1 :042 > n4 = Ninja.new(first_name: "Lucio", last_name: "Castellanos", dojo_id: "12")\
++----+------------+-------------+---------+------------+------------+\
+| id | first_name | last_name   | dojo_id | created_at | updated_at |\
++----+------------+-------------+---------+------------+------------+\
+|    | Lucio      | Castellanos | 12      |            |            |\
++----+------------+-------------+---------+------------+------------+\
+1 row in set\
+2.3.1 :043 > Ninja.all\
+  \cf6 Ninja Load (2.6ms)\cf2   SELECT "ninjas".* FROM "ninjas"\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 1  |            |           |         | 2018-06-10 21:58:59 UTC | 2018-06-10 21:58:59 UTC |\
+| 2  | Cameron    | Riera     | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
+| 3  | Dianne     | Feinstein | 14      | 2018-06-10 22:29:22 UTC | 2018-06-10 22:29:22 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+3 rows in set\
+2.3.1 :044 > n4.save\
+  \cf4  (0.1ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (4.8ms)\cf2   INSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Lucio"], ["last_name", "Castellanos"], ["dojo_id", 12], ["created_at", "2018-06-10 22:31:59.679871"], ["updated_at", "2018-06-10 22:31:59.679871"]]\
+  \cf4  (3.8ms)\cf2   \cf5 commit transaction\cf2 \
+ => true \
+2.3.1 :045 > n3.save\
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (5.8ms)\cf2   \cf5 INSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)\cf2   [["first_name", "Gregory"], ["last_name", "Paul"], ["dojo_id", 12], ["created_at", "2018-06-10 22:32:04.832163"], ["updated_at", "2018-06-10 22:32:04.832163"]]\
+  \cf6  (3.8ms)\cf2   commit transaction\
+ => true \
+2.3.1 :046 > Ninja.all\
+  \cf4 Ninja Load (2.3ms)\cf2   \cf5 SELECT "ninjas".* FROM "ninjas"\cf2 \
++----+------------+-------------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name   | dojo_id | created_at              | updated_at              |\
++----+------------+-------------+---------+-------------------------+-------------------------+\
+| 1  |            |             |         | 2018-06-10 21:58:59 UTC | 2018-06-10 21:58:59 UTC |\
+| 2  | Cameron    | Riera       | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
+| 3  | Dianne     | Feinstein   | 14      | 2018-06-10 22:29:22 UTC | 2018-06-10 22:29:22 UTC |\
+| 4  | Lucio      | Castellanos | 12      | 2018-06-10 22:31:59 UTC | 2018-06-10 22:31:59 UTC |\
+| 5  | Gregory    | Paul        | 12      | 2018-06-10 22:32:04 UTC | 2018-06-10 22:32:04 UTC |\
++----+------------+-------------+---------+-------------------------+-------------------------+\
+5 rows in set\
+2.3.1 :047 > n5 = Ninja.new(first_name: "Nancy", last_name: "Pelosi", dojo_id: "14")\
++----+------------+-----------+---------+------------+------------+\
+| id | first_name | last_name | dojo_id | created_at | updated_at |\
++----+------------+-----------+---------+------------+------------+\
+|    | Nancy      | Pelosi    | 14      |            |            |\
++----+------------+-----------+---------+------------+------------+\
+1 row in set\
+2.3.1 :048 > n5.save\
+  \cf6  (0.1ms)\cf2   begin transaction\
+  \cf4 SQL (5.1ms)\cf2   \cf5 INSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)\cf2   [["first_name", "Nancy"], ["last_name", "Pelosi"], ["dojo_id", 14], ["created_at", "2018-06-10 22:33:26.712117"], ["updated_at", "2018-06-10 22:33:26.712117"]]\
+  \cf6  (4.3ms)\cf2   commit transaction\
+ => true \
+2.3.1 :049 > n6 = Ninja.new(first_name: "Jerry", last_name: "Brown", dojo_id: "14")\
++----+------------+-----------+---------+------------+------------+\
+| id | first_name | last_name | dojo_id | created_at | updated_at |\
++----+------------+-----------+---------+------------+------------+\
+|    | Jerry      | Brown     | 14      |            |            |\
++----+------------+-----------+---------+------------+------------+\
+1 row in set\
+2.3.1 :050 > n6.save\
+  \cf4  (0.1ms)\cf2   \cf5 begin transaction\cf2 \
+  \cf6 SQL (4.4ms)\cf2   INSERT INTO "ninjas" ("first_name", "last_name", "dojo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Jerry"], ["last_name", "Brown"], ["dojo_id", 14], ["created_at", "2018-06-10 22:33:58.583377"], ["updated_at", "2018-06-10 22:33:58.583377"]]\
+  \cf4  (3.9ms)\cf2   \cf5 commit transaction\cf2 \
+ => true \
+2.3.1 :051 > Ninja.all\
+  \cf6 Ninja Load (2.2ms)\cf2   SELECT "ninjas".* FROM "ninjas"\
++----+------------+-------------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name   | dojo_id | created_at              | updated_at              |\
++----+------------+-------------+---------+-------------------------+-------------------------+\
+| 1  |            |             |         | 2018-06-10 21:58:59 UTC | 2018-06-10 21:58:59 UTC |\
+| 2  | Cameron    | Riera       | 12      | 2018-06-10 22:27:18 UTC | 2018-06-10 22:27:18 UTC |\
+| 3  | Dianne     | Feinstein   | 14      | 2018-06-10 22:29:22 UTC | 2018-06-10 22:29:22 UTC |\
+| 4  | Lucio      | Castellanos | 12      | 2018-06-10 22:31:59 UTC | 2018-06-10 22:31:59 UTC |\
+| 5  | Gregory    | Paul        | 12      | 2018-06-10 22:32:04 UTC | 2018-06-10 22:32:04 UTC |\
+| 6  | Nancy      | Pelosi      | 14      | 2018-06-10 22:33:26 UTC | 2018-06-10 22:33:26 UTC |\
+| 7  | Jerry      | Brown       | 14      | 2018-06-10 22:33:58 UTC | 2018-06-10 22:33:58 UTC |\
++----+------------+-------------+---------+-------------------------+-------------------------+\
+7 rows in set\
+2.3.1 :052 > Dojo.find(14).ninjas\
+  \cf4 Dojo Load (2.3ms)\cf2   \cf5 SELECT  "dojos".* FROM "dojos" WHERE "dojos"."id" = ? LIMIT 1\cf2   [["id", 14]]\
+  \cf6 Ninja Load (1.9ms)\cf2   SELECT "ninjas".* FROM "ninjas" WHERE "ninjas"."dojo_id" = ?  [["dojo_id", 14]]\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+| 3  | Dianne     | Feinstein | 14      | 2018-06-10 22:29:22 UTC | 2018-06-10 22:29:22 UTC |\
+| 6  | Nancy      | Pelosi    | 14      | 2018-06-10 22:33:26 UTC | 2018-06-10 22:33:26 UTC |\
+| 7  | Jerry      | Brown     | 14      | 2018-06-10 22:33:58 UTC | 2018-06-10 22:33:58 UTC |\
++----+------------+-----------+---------+-------------------------+-------------------------+\
+3 rows in set\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+-8\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs30 \cf2 \cb3 \CocoaLigature0 2.3.1 :098 > Ninja.select(:first_name).order('created_at DESC').where(dojo_id: "12")\
+  \cf4 Ninja Load (2.2ms)\cf2   \cf5 SELECT "ninjas"."first_name" FROM "ninjas" WHERE "ninjas"."dojo_id" = ?  ORDER BY created_at DESC\cf2   [["dojo_id", 12]]\
++----+------------+\
+| id | first_name |\
++----+------------+\
+|    | Gregory    |\
+|    | Lucio      |\
+|    | Cameron    |\
++----+------------+\
+3 rows in set\
+
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  -9\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2 \cf7 \cb8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7     has_many :ninjas, :dependent => :delete_all\cb1 \
+\
+}
